@@ -6,47 +6,93 @@ package com.academia.batch.model;
 public class Libro {
 
     private String nombre;
-    private String departamento;
-    private double salario;
-    private double bono;
+    private String isbn;
+    private String categoria;
+    private String autor;
+    private Integer paginas;
+    private double precio;
+    private Integer cantidad;
+
 
     public Libro() {
     }
+
 
     public String getNombre() {
         return nombre;
     }
 
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getDepartamento() {
-        return departamento;
+
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
-    public double getSalario() {
-        return salario;
+
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setSalario(double salario) {
-        this.salario = salario;
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public double getBono() {
-        return bono;
+
+    public String getAutor() {
+        return autor;
     }
 
-    public void setBono(double bono) {
-        this.bono = bono;
+
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
+
+
+    public Integer getPaginas() {
+        return paginas;
+    }
+
+
+    public void setPaginas(Integer paginas) {
+        this.paginas = paginas;
+    }
+
+
+    public double getPrecio() {
+        return precio;
+    }
+
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
 
     @Override
     public String toString() {
-        return nombre + " | " + departamento + " | Salario: " + salario + " | Bono: " + bono;
+        return "Libro [nombre=" + nombre + ", isbn=" + isbn + ", categoria=" + categoria + ", autor=" + autor
+                + ", paginas=" + paginas + ", precio=" + precio + ", cantidad=" + cantidad + "]";
     }
+
+   
 }

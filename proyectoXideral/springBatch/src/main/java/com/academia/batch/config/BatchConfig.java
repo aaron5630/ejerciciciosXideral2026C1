@@ -28,10 +28,10 @@ public class BatchConfig {
     @Bean
     public FlatFileItemReader<Libro> leerCsv() {
         return new FlatFileItemReaderBuilder<Libro>()
-                .name("empleadoReader")
-                .resource(new ClassPathResource("empleados.csv"))
+                .name("libroReader")
+                .resource(new ClassPathResource("libros.csv"))
                 .delimited()                          // separado por comas
-                .names("nombre", "departamento", "salario") // columnas del CSV
+                .names("nombre", "isbn", "categoria", "autor", "paginas", "precio", "cantidad") // columnas del CSV
                 .targetType(Libro.class)            // mapea a nuestro POJO
                 .linesToSkip(1)                        // saltar la linea de encabezado
                 .build();
@@ -39,7 +39,7 @@ public class BatchConfig {
 
     // ---------- PROCESSOR: transforma cada registro ----------
     @Bean
-    public LibroProcessor procesarEmpleado() {
+    public LibroProcessor procesarLibro() {
         return new LibroProcessor();
     }
 
@@ -47,8 +47,8 @@ public class BatchConfig {
     @Bean
     public JdbcBatchItemWriter<Libro> escribirEnBd(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<Libro>()
-                .sql("INSERT INTO empleados_procesados (nombre, departamento, salario, bono) " +
-                     "VALUES (:nombre, :departamento, :salario, :bono)")
+                .sql("INSERT INTO libros_procesados (nombre, isbn, categoria, autor, paginas, precio, cantidad) " +
+                     "VALUES (:nombre, :isbn, :categoria, :autor, :paginas, :precio, :cantidad)")
                 .dataSource(dataSource)
                 .beanMapped()   // usa los getters del POJO para mapear :nombre, :salario, etc.
                 .build();
@@ -59,21 +59,21 @@ public class BatchConfig {
     public Step paso1(JobRepository jobRepository,
                       PlatformTransactionManager transactionManager,
                       FlatFileItemReader<Libro> leerCsv,
-                      LibroProcessor procesarEmpleado,
+                      LibroProcessor procesarLibro,
                       JdbcBatchItemWriter<Libro> escribirEnBd) {
 
         return new StepBuilder("paso1", jobRepository)
-                .<Libro, Libro>chunk(3, transactionManager)  // procesa de 3 en 3
+                .<Libro, Libro>chunk(5, transactionManager)  
                 .reader(leerCsv)
-                .processor(procesarEmpleado)
+                .processor(procesarLibro)
                 .writer(escribirEnBd)
                 .build();
     }
 
     // ---------- JOB: el trabajo completo ----------
     @Bean
-    public Job procesarEmpleadosJob(JobRepository jobRepository, Step paso1) {
-        return new JobBuilder("procesarEmpleadosJob", jobRepository)
+    public Job procesarLibrosJob(JobRepository jobRepository, Step paso1) {
+        return new JobBuilder("procesarLibrosJob", jobRepository)
                 .start(paso1)   // inicia con el paso1
                 .build();
     }

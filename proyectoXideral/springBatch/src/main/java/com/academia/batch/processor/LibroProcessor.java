@@ -15,9 +15,13 @@ public class LibroProcessor implements ItemProcessor<Libro, Libro> {
 
     @Override
     public Libro process(Libro libro) {
-        // Regla de negocio: nombre en mayusculas y bono del 10%
-        libro.setNombre(libro.getNombre().toUpperCase());
-        libro.setBono(libro.getSalario() * 0.10);
+        libro.setNombre(libro.getNombre());
+        libro.setIsbn(libro.getIsbn());
+        libro.setCategoria(libro.getCategoria());
+        libro.setAutor(libro.getAutor());
+        libro.setPaginas(libro.getPaginas());
+        libro.setPrecio(libro.getPrecio());
+        libro.setCantidad(libro.getCantidad());
 
         log.info("Procesando: {}", libro);
         return libro;
