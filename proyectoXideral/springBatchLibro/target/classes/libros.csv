@@ -1,0 +1,101 @@
+nombre,isbn,categoria,autor,paginas,precio,cantidad
+Historias 1,978-8487579650,Arte,Sofía Ruiz,602,363.0,48
+Fundamentos 2,978-8497123064,Historia,Héctor Paredes,383,784.39,34
+Sombras 3,978-8437858985,Aventura,Roberto Ramírez,648,422.78,42
+El Secreto 4,978-8462027211,Gastronomía,Tomás Salas,539,340.11,27
+Sombras 5,978-8427079029,Fantasía,Daniel León,409,687.26,3
+Universo 6,978-8448160008,Infantil,Laura León,198,197.6,2
+El Arte 7,978-8441152727,Misterio,Isabel Sánchez,490,223.74,14
+La Isla 8,978-8411179269,Ficción,Gabriel Ríos,425,257.02,48
+Guía 9,978-8468690733,Ciencia,Camila Silva,693,532.56,18
+El Reino 10,978-8413333922,Psicología,Sofía Navarro,250,744.23,9
+El Código 11,978-8429758255,Misterio,Raúl Vega,214,162.72,48
+La Isla 12,978-8441021063,Infantil,Elena Herrera,599,383.26,29
+Sombras 13,978-8474666283,Fantasía,Roberto Salas,249,543.27,9
+Historias 14,978-8488701394,Romance,Mónica Medina,531,682.91,23
+Sombras 15,978-8492346465,Tecnología,Sergio Márquez,189,782.68,19
+La Isla 16,978-8431472206,Infantil,Sergio Paredes,500,727.07,49
+Manual 17,978-8422139722,Aventura,Natalia López,340,151.8,13
+Manual 18,978-8464767471,Historia,Martín Castillo,234,360.73,20
+Universo 19,978-8493129104,Ficción,Raúl Reyes,159,610.37,50
+El Código 20,978-8452488075,Ficción,Luis Gil,670,103.07,8
+La Isla 21,978-8428939275,Ciencia Ficción,Raúl Navarro,669,256.61,6
+Historias 22,978-8444088778,Psicología,Natalia Márquez,431,222.94,45
+El Reino 23,978-8498202368,Romance,Sergio Salas,596,705.33,19
+El Reino 24,978-8453780358,Aventura,Mónica Luna,344,531.94,44
+Crónicas 25,978-8493046930,Fantasía,Roberto Fuentes,296,601.08,50
+El Arte 26,978-8473401255,Salud,Ana Ortega,686,333.42,42
+Aprendiendo 27,978-8458801567,Gastronomía,Sofía López,340,403.71,49
+Guía 28,978-8430248744,Tecnología,Héctor Medina,289,181.84,3
+El Reino 29,978-8446928506,Psicología,Paola Vidal,695,162.95,48
+Introducción 30,978-8465400541,Educativo,Adriana Paredes,416,795.09,5
+El Secreto 31,978-8469795874,Ficción,Laura Vega,639,388.09,19
+Manual 32,978-8437295502,Historia,Adriana Salas,636,356.25,1
+Crónicas 33,978-8448732692,Negocios,Pedro Romero,225,714.26,47
+El Código 34,978-8424433214,Drama,Roberto Salas,678,228.26,8
+Introducción 35,978-8454238142,Drama,Ana Paredes,481,201.19,20
+Historias 36,978-8449770420,Romance,Camila Ríos,475,230.08,41
+El Viaje 37,978-8414253056,Ciencia Ficción,Laura Méndez,347,581.19,50
+El Secreto 38,978-8423937008,Aventura,Andrea Salas,379,484.23,49
+Manual 39,978-8471861831,Historia,Ricardo Peña,167,779.24,22
+Guía 40,978-8438792788,Gastronomía,Laura Núñez,339,793.86,41
+El Reino 41,978-8411342193,Infantil,Esteban Méndez,145,476.29,36
+El Secreto 42,978-8487225919,Romance,Lucía Márquez,647,189.99,47
+El Código 43,978-8475071664,Drama,Camila Herrera,477,677.57,11
+El Arte 44,978-8410869272,Salud,Jorge Vega,225,732.64,28
+Aprendiendo 45,978-8449685710,Gastronomía,Patricia Campos,387,449.81,49
+Introducción 46,978-8480014234,Misterio,Lucía Luna,587,271.61,50
+El Reino 47,978-8488129818,Educativo,Gabriel Gil,632,396.64,25
+Aprendiendo 48,978-8487530997,Arte,Elena Díaz,457,236.27,28
+Fundamentos 49,978-8416577693,Ficción,Patricia Díaz,517,588.03,46
+Introducción 50,978-8483801658,Salud,Elena Vidal,573,620.79,44
+Guía 51,978-8492731190,Ficción,Ana Silva,571,680.18,17
+Introducción 52,978-8450298426,Ciencia,Héctor Ramírez,167,685.62,38
+Guía 53,978-8481453636,Negocios,Ricardo Campos,413,750.91,41
+El Secreto 54,978-8471780079,Gastronomía,Pedro Gil,687,293.4,28
+Historias 55,978-8445010987,Ciencia Ficción,Andrea Torres,506,634.52,41
+Crónicas 56,978-8413480073,Ciencia Ficción,Jorge Vega,576,500.72,4
+Crónicas 57,978-8490784491,Romance,Pedro Romero,662,547.13,28
+El Código 58,978-8477153488,Historia,Ana Sánchez,298,175.98,25
+Fundamentos 59,978-8425468397,Drama,María Castillo,363,169.99,17
+El Secreto 60,978-8494034133,Romance,Paola Salas,366,364.06,23
+Crónicas 61,978-8424096228,Ficción,Ricardo Vega,620,217.74,4
+El Secreto 62,978-8440555004,Aventura,Laura Vega,651,472.62,39
+El Arte 63,978-8493634842,Negocios,Tomás Núñez,367,393.41,27
+Sombras 64,978-8498521299,Educativo,Roberto Díaz,434,625.26,2
+El Secreto 65,978-8491256725,Ciencia Ficción,Andrea Márquez,517,556.87,34
+Guía 66,978-8437698560,Infantil,Raúl Peña,308,304.33,45
+Crónicas 67,978-8499194363,Ficción,Natalia Sánchez,165,223.84,11
+Crónicas 68,978-8469821407,Salud,Carlos Fuentes,253,786.63,30
+Crónicas 69,978-8460067364,Ciencia Ficción,Tomás Cruz,257,451.82,48
+El Código 70,978-8490350495,Psicología,Camila Cruz,464,143.01,45
+Fundamentos 71,978-8461619681,Romance,Martín Herrera,552,243.92,35
+Sombras 72,978-8447072439,Educativo,Andrea Torres,228,246.82,42
+Manual 73,978-8428786799,Misterio,Pedro Ramírez,380,496.63,38
+El Código 74,978-8451198725,Romance,Sofía Márquez,143,282.08,25
+La Isla 75,978-8490968714,Fantasía,Sofía Romero,513,631.49,48
+El Reino 76,978-8452670497,Historia,Ana Fuentes,658,313.07,39
+El Reino 77,978-8439467897,Misterio,Pedro Romero,124,210.0,8
+El Reino 78,978-8436793666,Educativo,Roberto Fuentes,473,630.04,46
+El Viaje 79,978-8431767419,Educativo,Jorge Núñez,462,790.5,40
+Crónicas 80,978-8444755428,Aventura,Esteban Ramírez,155,413.47,38
+Guía 81,978-8442188833,Aventura,Adriana Núñez,590,322.13,16
+Introducción 82,978-8495062269,Gastronomía,Pedro Torres,134,747.51,17
+El Viaje 83,978-8474651711,Aventura,Martín Torres,273,308.0,20
+Aprendiendo 84,978-8423934661,Ficción,Mónica Núñez,188,362.43,43
+El Viaje 85,978-8476378932,Psicología,Valeria Vidal,604,581.59,35
+Manual 86,978-8485567621,Ciencia Ficción,Roberto Ruiz,476,742.1,19
+Fundamentos 87,978-8412507501,Tecnología,Isabel Peña,169,108.88,30
+Historias 88,978-8444693028,Educativo,Natalia Salas,643,445.73,39
+Universo 89,978-8472287638,Psicología,Ana Díaz,466,423.78,35
+Manual 90,978-8467373856,Ciencia,Adriana Núñez,428,275.1,12
+El Secreto 91,978-8447722415,Infantil,Carlos Herrera,529,649.05,26
+Historias 92,978-8496461109,Infantil,Camila Vidal,605,259.81,23
+La Isla 93,978-8489586924,Tecnología,Sergio Ríos,170,264.91,14
+Sombras 94,978-8412026744,Fantasía,Luis Castillo,623,791.05,2
+Crónicas 95,978-8472515219,Fantasía,Gabriel Silva,334,375.7,30
+Introducción 96,978-8450937861,Fantasía,Elena Campos,191,585.04,26
+Fundamentos 97,978-8472455400,Negocios,Martín Sánchez,287,120.51,23
+Historias 98,978-8411128851,Aventura,Paola Ramírez,662,222.13,9
+Historias 99,978-8458299045,Drama,Sofía Vega,488,163.4,45
+Fundamentos 100,978-8459461385,Infantil,Pedro Fuentes,152,251.39,4
