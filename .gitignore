@@ -1,4 +1,33 @@
+# Metadatos
 .metadata/
+
+# Logs y datos
 *.log
 *.dat
-*.json
+
+# Maven - build artifacts
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.settings/
+.classpath
+.project
+
+# VS Code
+.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Variables de entorno
+.env
+.env.local
