@@ -40,6 +40,61 @@ Los mensajes de commit siguen la convención [Conventional Commits](https://www.
   - Archivos: `.gitignore`
 
 ---
+
+## [Sin versión] - 2026-06-17
+
+### Agregado
+- `biblioteca/src/test/java/com/biblioteca/service/UsuarioServiceImplTest.java` — 9 pruebas TDD (fase 🔴).
+- `biblioteca/src/test/java/com/biblioteca/service/LibroServiceImplTest.java` — 11 pruebas TDD (fase 🔴).
+- `biblioteca/src/test/java/com/biblioteca/service/PrestamoServiceImplTest.java` — 21 pruebas TDD (fase 🔴).
+
+### Commit
+- **`d81e23b`** — `test: agregar 41 pruebas TDD (fase roja - services no implementados aun)`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
+
+## [Sin versión] - 2026-06-17 (2)
+
+### Agregado
+- `UsuarioService.java`, `LibroService.java`, `PrestamoService.java` — interfaces de servicio.
+- `UsuarioServiceImpl.java` — implementación con lógica de activación, email único.
+- `LibroServiceImpl.java` — implementación con validación de ISBN, rol del empleado.
+- `PrestamoServiceImpl.java` — implementación con las 17 reglas de negocio completas.
+
+### Commit
+- **`852bc77`** — `feat: agregar interfaces de servicio y sus implementaciones`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
+
+## [Sin versión] - 2026-06-17 (3)
+
+### Agregado
+- `UsuarioController.java` — 5 endpoints en `/api/usuarios`.
+- `LibroController.java` — 5 endpoints en `/api/libros`.
+- `PrestamoController.java` — 5 endpoints en `/api/prestamos`.
+
+### Commit
+- **`795f2f5`** — `feat: agregar controllers REST (15 endpoints)`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
+
+## [Sin versión] - 2026-06-17 (4)
+
+### Cambiado
+- `README.md` — completado con descripción del proyecto, instrucciones de ejecución, tabla de endpoints y guía de acceso a H2.
+- `CHANGELOG.md` — registro actualizado con todos los pushes anteriores.
+
+### Resultado TDD
+- ✅ **41/41 pruebas pasaron** — BUILD SUCCESS
+
+### Commit
+- **_(este push)_** — `docs: completar README y actualizar CHANGELOG`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
 > Cada vez que se realice un `push` o `pull` en el proyecto, Copilot actualizará este registro
 > con el autor, fecha y descripción del cambio correspondiente.
 
@@ -66,8 +121,17 @@ Los mensajes de commit siguen la convención [Conventional Commits](https://www.
 - `arquitectura.md` — agregada sección de TDD con ciclo 🔴🟢🔵 y justificación.
 - `CHANGELOG.md` — registro actualizado.
 
+---
+
+## [Sin versión] - 2026-03-11 (3)
+
+### Cambiado
+- `BUSINESS.md` — corregida regla 5 (ROLE_EMPLOYEE puede registrar libros), regla 17 y CU-11 (fechaEntregaEstimada es automática).
+- `arquitectura.md` — agregada `RolNoPermitidoException` (403 Forbidden), estructura de paquetes actualizada, sección de configuración H2 (`bibliotecaV1`, en memoria, consola en `localhost:8080/h2-console`).
+- `TESTING.md` — corregido nombre de prueba #4 de Préstamo a `registrarPrestamo_usuarioSinRolUser_lanzaRolNoPermitidoException`.
+
 ### Commit
-- **`b0d15c3`** — `docs: agregar documentacion de pruebas TDD y metodologia`
+- **`6213722`** — `docs: corregir inconsistencias y agregar configuracion H2`
   - Autor: aaron5630 + Copilot
   - Rama: `master` → `origin/master`
-  - Archivos: `TESTING.md`, `tecnologias.md`, `arquitectura.md`, `CHANGELOG.md`
+  - Archivos: `BUSINESS.md`, `arquitectura.md`, `TESTING.md`
