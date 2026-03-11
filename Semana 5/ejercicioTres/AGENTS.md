@@ -7,9 +7,21 @@ Contiene el contexto, reglas y estado actual del proyecto para mantener continui
 
 ## 📌 Descripción del Proyecto
 
-> _Por definir — Se actualizará conforme se vaya dando forma al proyecto._
+> _Por definir — Ver `README.md` para la descripción pública y `BUSINESS.md` para las reglas de negocio._
 
 Aplicación demostrativa del uso de IA en la generación de código, construida con Spring Boot.
+
+## 📖 Archivos de Contexto — Leer al iniciar sesión
+
+Al iniciar una sesión en este proyecto, GitHub Copilot CLI debe leer los siguientes archivos en orden:
+
+| Prioridad | Archivo | Contenido |
+|---|---|---|
+| 1 | `AGENTS.md` | Contexto general, reglas y convenciones *(este archivo)* |
+| 2 | `BUSINESS.md` | Reglas de negocio, funcionalidades y entidades del dominio |
+| 3 | `arquitectura.md` | Arquitectura, capas, estructura de paquetes y SOLID |
+| 4 | `tecnologias.md` | Stack tecnológico |
+| 5 | `CHANGELOG.md` | Historial de cambios recientes |
 
 ---
 
