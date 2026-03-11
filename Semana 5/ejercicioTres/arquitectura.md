@@ -112,6 +112,27 @@ Libro    ──< Prestamo                         [OneToMany / ManyToOne]
 
 ---
 
+## 🧪 Metodología — TDD (Test-Driven Development)
+
+Este proyecto sigue la metodología **TDD**. Las pruebas se escriben **antes** de implementar el código.
+
+**Ciclo TDD:**
+```
+🔴 RED      → Escribir la prueba. Falla porque el código no existe aún.
+🟢 GREEN    → Escribir el mínimo código necesario para que la prueba pase.
+🔵 REFACTOR → Limpiar y mejorar el código. Las pruebas deben seguir pasando.
+```
+
+**¿Por qué TDD?**
+- Fuerza a pensar en el comportamiento esperado antes de codificar.
+- Cada regla de negocio queda cubierta por una prueba desde el inicio.
+- Da confianza al refactorizar — si las pruebas pasan, nada está roto.
+- Las pruebas son documentación viva del código.
+
+> Ver `TESTING.md` para el detalle completo de los casos de prueba.
+
+---
+
 ## 📡 API — Endpoints
 
 ### 👤 `/usuarios`

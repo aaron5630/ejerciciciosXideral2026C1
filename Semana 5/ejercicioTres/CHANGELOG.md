@@ -42,3 +42,22 @@ Los mensajes de commit siguen la convención [Conventional Commits](https://www.
 ---
 > Cada vez que se realice un `push` o `pull` en el proyecto, Copilot actualizará este registro
 > con el autor, fecha y descripción del cambio correspondiente.
+
+---
+
+## [Sin versión] - 2026-03-11
+
+### Agregado
+- `README.md` — estructura base del proyecto con descripción, instrucciones y referencias.
+- `BUSINESS.md` — documentación del negocio con descripción, 15 funcionalidades, 17 reglas de negocio, 3 entidades (Usuario, Libro, Préstamo) y 15 casos de uso.
+
+### Cambiado
+- `arquitectura.md` — completado con patrón en capas, estructura de paquetes, responsabilidades, modelo de datos, 15 endpoints, 11 excepciones, principios SOLID y convenciones de nomenclatura.
+- `BUSINESS.md` — actualizado con endpoints detallados por recurso y casos de uso completos.
+- `TESTING.md` — actualizado con estructura base para pruebas unitarias.
+
+### Commit
+- **`5c2e491`** — `docs: completar documentacion del proyecto biblioteca`
+  - Autor: aaron5630 + Copilot
+  - Rama: `master` → `origin/master`
+  - Archivos: `README.md`, `BUSINESS.md`, `TESTING.md`, `arquitectura.md`

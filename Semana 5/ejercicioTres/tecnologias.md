@@ -17,4 +17,12 @@ Este archivo documenta el stack tecnológico utilizado en el proyecto, junto con
 
 ---
 
-> 📝 Última actualización: 2026-03-10
+## 🧪 Metodología de Desarrollo
+
+| Metodología | Descripción |
+|---|---|
+| **TDD (Test-Driven Development)** | Las pruebas unitarias se escriben **antes** de implementar el código. Ciclo: 🔴 prueba falla → 🟢 código mínimo para que pase → 🔵 refactor. Garantiza que cada regla de negocio esté cubierta por una prueba desde el inicio. |
+
+---
+
+> 📝 Última actualización: 2026-03-11
