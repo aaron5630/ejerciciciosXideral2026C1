@@ -81,14 +81,17 @@ Este archivo documenta la estrategia de pruebas del proyecto, los casos de prueb
 | 11 | `registrarPrestamo_libroNoDisponible_lanzaLibroNoDisponibleException` | Lanza excepción si el libro tiene `disponible = false` |
 | 12 | `registrarPrestamo_sinStock_lanzaLibroNoDisponibleException` | Lanza excepción si el libro tiene `cantidad = 0` |
 | 13 | `registrarPrestamo_libroYaPrestado_lanzaLibroYaPrestadoException` | Lanza excepción si el usuario ya tiene ese libro activo |
-| 14 | `registrarPrestamo_fechaInvalida_lanzaException` | Lanza excepción si la fecha estimada supera los 10 días |
-| 15 | `registrarDevolucion_exitoso` | Registra la devolución e incrementa el stock del libro |
-| 16 | `registrarDevolucion_noExiste_lanzaPrestamoNotFoundException` | Lanza excepción si el préstamo no existe |
-| 17 | `obtenerPrestamoPorId_exitoso` | Retorna el préstamo correctamente |
-| 18 | `obtenerPrestamoPorId_noExiste_lanzaPrestamoNotFoundException` | Lanza excepción si el préstamo no existe |
-| 19 | `obtenerTodosLosPrestamos_exitoso` | Retorna la lista de préstamos |
-| 20 | `obtenerPrestamosPorUsuario_exitoso` | Retorna los préstamos de un usuario |
-| 21 | `obtenerPrestamosPorUsuario_usuarioNoExiste_lanzaUsuarioNotFoundException` | Lanza excepción si el usuario no existe |
+| 14 | `registrarDevolucion_exitoso` | Registra la devolución e incrementa el stock del libro |
+| 15 | `registrarDevolucion_noExiste_lanzaPrestamoNotFoundException` | Lanza excepción si el préstamo no existe |
+| 16 | `obtenerPrestamoPorId_exitoso` | Retorna el préstamo correctamente |
+| 17 | `obtenerPrestamoPorId_noExiste_lanzaPrestamoNotFoundException` | Lanza excepción si el préstamo no existe |
+| 18 | `obtenerTodosLosPrestamos_exitoso` | Retorna la lista de préstamos |
+| 19 | `obtenerPrestamosPorUsuario_exitoso` | Retorna los préstamos de un usuario |
+| 20 | `obtenerPrestamosPorUsuario_usuarioNoExiste_lanzaUsuarioNotFoundException` | Lanza excepción si el usuario no existe |
+
+> ℹ️ **Nota:** El test `registrarPrestamo_fechaInvalida` fue eliminado porque `fechaEntregaEstimada`
+> siempre se calcula automáticamente como `fechaPrestamo + 10 días` en el Service.
+> El empleado no envía ese valor, por lo que no puede ser inválido.
 
 ---
 
