@@ -164,7 +164,7 @@ Este proyecto sigue la metodología **TDD**. Las pruebas se escriben **antes** d
 | `GET` | `/prestamos/{id}` | Buscar préstamo por id | `ROLE_ADMIN`, `ROLE_EMPLOYEE` |
 | `GET` | `/prestamos/usuario/{id}` | Listar préstamos por usuario | `ROLE_ADMIN`, `ROLE_EMPLOYEE` |
 | `POST` | `/prestamos` | Registrar nuevo préstamo | `ROLE_ADMIN`, `ROLE_EMPLOYEE` |
-| `PUT` | `/prestamos/{id}/devolver` | Registrar devolución de libro | `ROLE_ADMIN`, `ROLE_EMPLOYEE` |
+| `PUT` | `/prestamos/{id}/devolucion` | Registrar devolución de libro | `ROLE_ADMIN`, `ROLE_EMPLOYEE` |
 
 > 📌 **Nota:** Los roles se verifican manualmente en el Service mediante el `id` del usuario que realiza la acción. JWT/Spring Security se implementará en una versión futura sin necesidad de cambiar la lógica actual.
 

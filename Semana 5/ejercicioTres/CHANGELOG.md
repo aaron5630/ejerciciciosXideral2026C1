@@ -91,7 +91,63 @@ Los mensajes de commit siguen la convención [Conventional Commits](https://www.
 - ✅ **41/41 pruebas pasaron** — BUILD SUCCESS
 
 ### Commit
-- **_(este push)_** — `docs: completar README y actualizar CHANGELOG`
+- **`2ebe754`** — `docs: completar README y actualizar CHANGELOG`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
+
+## [Sin versión] - 2026-03-11 (4)
+
+### Corregido
+- `TESTING.md` — eliminado test #14 `registrarPrestamo_fechaInvalida` (no aplica: `fechaEntregaEstimada` es automática). Total corregido: **40 pruebas**.
+
+### Commit
+- **`daa1fa5`** — `docs: corregir TESTING.md - eliminar test invalido y actualizar total a 40 pruebas`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
+
+## [Sin versión] - 2026-03-11 (5)
+
+### Agregado
+- `API_GUIDE.md` — guía de endpoints con instrucciones de ejecución y 14+ ejemplos JSON probados en vivo contra `localhost:8080`. Cubre los 15 endpoints con casos de éxito y error.
+
+### Commit
+- **`7d2bfc4`** — `docs: agregar API_GUIDE.md con ejemplos probados en vivo`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
+
+## [Sin versión] - 2026-03-11 (6)
+
+### Cambiado
+- `AGENTS.md` — reemplazado contenido desactualizado ("Por definir"). Ahora contiene: stack, arquitectura, entidades, endpoints, reglas clave, tabla de estado del proyecto (COMPLETADO) e historial de decisiones técnicas.
+
+### Commit
+- **`801538c`** — `docs: actualizar AGENTS.md con contexto completo del proyecto terminado`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
+
+## [Sin versión] - 2026-03-11 (7)
+
+### Cambiado
+- `AGENTS.md` — agregada sección "Regla de Sincronización de Documentación" con tabla de qué archivos actualizar según el tipo de cambio y flujo de trabajo obligatorio antes de cada commit.
+
+### Commit
+- **`76a545b`** — `docs: agregar regla de sincronizacion de documentacion en AGENTS.md`
+  - Autor: aaron5630 + Copilot | Rama: `master`
+
+---
+
+## [Sin versión] - 2026-03-11 (8)
+
+### Corregido
+- `BUSINESS.md` — todas las funcionalidades marcadas como `✅ Implementado` (estaban como `🔲 Pendiente`). Endpoints actualizados con prefijo `/api/` y rutas reales. `fechaEntregaEstimada` corregida como automática.
+- `arquitectura.md` — endpoint corregido de `/prestamos/{id}/devolver` a `/prestamos/{id}/devolucion`.
+
+### Commit
+- **_(este push)_** — `docs: corregir inconsistencias en BUSINESS.md y arquitectura.md`
   - Autor: aaron5630 + Copilot | Rama: `master`
 
 ---

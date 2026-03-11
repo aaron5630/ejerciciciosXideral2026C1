@@ -16,21 +16,21 @@ Aplicación REST que simula un sistema de préstamos de libros para una bibliote
 
 | # | Funcionalidad | Método HTTP | Endpoint | Estado |
 |---|---|---|---|---|
-| 1 | Listar todos los usuarios | `GET` | `/usuarios` | 🔲 Pendiente |
-| 2 | Buscar usuario por id | `GET` | `/usuarios/{id}` | 🔲 Pendiente |
-| 3 | Registrar usuario | `POST` | `/usuarios` | 🔲 Pendiente |
-| 4 | Actualizar usuario | `PUT` | `/usuarios/{id}` | 🔲 Pendiente |
-| 5 | Desactivar usuario | `DELETE` | `/usuarios/{id}` | 🔲 Pendiente |
-| 6 | Listar todos los libros | `GET` | `/libros` | 🔲 Pendiente |
-| 7 | Buscar libro por id | `GET` | `/libros/{id}` | 🔲 Pendiente |
-| 8 | Registrar libro | `POST` | `/libros` | 🔲 Pendiente |
-| 9 | Actualizar libro | `PUT` | `/libros/{id}` | 🔲 Pendiente |
-| 10 | Desactivar libro | `DELETE` | `/libros/{id}` | 🔲 Pendiente |
-| 11 | Listar todos los préstamos | `GET` | `/prestamos` | 🔲 Pendiente |
-| 12 | Buscar préstamo por id | `GET` | `/prestamos/{id}` | 🔲 Pendiente |
-| 13 | Listar préstamos por usuario | `GET` | `/prestamos/usuario/{id}` | 🔲 Pendiente |
-| 14 | Registrar préstamo | `POST` | `/prestamos` | 🔲 Pendiente |
-| 15 | Registrar devolución | `PUT` | `/prestamos/{id}/devolver` | 🔲 Pendiente |
+| 1 | Listar todos los usuarios | `GET` | `/api/usuarios` | ✅ Implementado |
+| 2 | Buscar usuario por id | `GET` | `/api/usuarios/{id}` | ✅ Implementado |
+| 3 | Registrar usuario | `POST` | `/api/usuarios` | ✅ Implementado |
+| 4 | Actualizar usuario | `PUT` | `/api/usuarios/{id}` | ✅ Implementado |
+| 5 | Desactivar usuario | `DELETE` | `/api/usuarios/{id}` | ✅ Implementado |
+| 6 | Listar todos los libros | `GET` | `/api/libros` | ✅ Implementado |
+| 7 | Buscar libro por id | `GET` | `/api/libros/{id}` | ✅ Implementado |
+| 8 | Registrar libro | `POST` | `/api/libros?idEmpleado={}` | ✅ Implementado |
+| 9 | Actualizar libro | `PUT` | `/api/libros/{id}` | ✅ Implementado |
+| 10 | Desactivar libro | `DELETE` | `/api/libros/{id}` | ✅ Implementado |
+| 11 | Listar todos los préstamos | `GET` | `/api/prestamos` | ✅ Implementado |
+| 12 | Buscar préstamo por id | `GET` | `/api/prestamos/{id}` | ✅ Implementado |
+| 13 | Listar préstamos por usuario | `GET` | `/api/prestamos/usuario/{id}` | ✅ Implementado |
+| 14 | Registrar préstamo | `POST` | `/api/prestamos?idUsuario={}&idEmpleado={}&idLibro={}` | ✅ Implementado |
+| 15 | Registrar devolución | `PUT` | `/api/prestamos/{id}/devolucion` | ✅ Implementado |
 
 ---
 
@@ -134,7 +134,7 @@ Representa el préstamo de un libro a un usuario. Es la entidad central de la ap
 | `empleado` | `Usuario` | Empleado que autoriza el préstamo | Requerido, debe tener `ROLE_EMPLOYEE` o `ROLE_ADMIN` |
 | `libro` | `Libro` | Libro prestado | Requerido |
 | `fechaPrestamo` | `LocalDate` | Fecha en que se realizó el préstamo | Automática al crear |
-| `fechaEntregaEstimada` | `LocalDate` | Fecha límite para devolver el libro | Requerida al registrar |
+| `fechaEntregaEstimada` | `LocalDate` | Fecha límite para devolver el libro | **Automática** — calculada por el sistema como `fechaPrestamo + 10 días`. El empleado no la envía. |
 | `fechaEntregaReal` | `LocalDate` | Fecha en que se devolvió el libro | `null` hasta que se registre la devolución |
 | `estado` | `Enum` | Estado actual del préstamo | `ACTIVO` por defecto al crear |
 
@@ -294,4 +294,4 @@ Representa el préstamo de un libro a un usuario. Es la entidad central de la ap
 
 ---
 
-> 📝 Última actualización: 2026-03-10
+> 📝 Última actualización: 2026-03-11
