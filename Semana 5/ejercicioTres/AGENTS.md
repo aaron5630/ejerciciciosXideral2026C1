@@ -117,6 +117,42 @@ exception/    → 12 excepciones + GlobalExceptionHandler
 
 ---
 
+## 🔄 Regla de Sincronización de Documentación
+
+**Cada vez que se realice un cambio significativo, Copilot debe actualizar todos los archivos de documentación afectados antes de hacer el commit.**
+
+### ¿Qué es un cambio significativo?
+- Se agrega, modifica o elimina una entidad, campo o relación.
+- Se agrega, cambia o elimina un endpoint.
+- Se agrega o modifica una regla de negocio.
+- Se agrega una nueva tecnología o dependencia.
+- Se cambia la arquitectura o estructura de paquetes.
+- Se define o completa una funcionalidad nueva.
+- Se toma una decisión de diseño importante.
+
+### ¿Qué archivos actualizar según el tipo de cambio?
+
+| Tipo de cambio | Archivos a actualizar |
+|---|---|
+| Nueva entidad o campo | `BUSINESS.md`, `arquitectura.md`, `AGENTS.md` (sección entidades), `TESTING.md` |
+| Nuevo endpoint | `arquitectura.md`, `AGENTS.md` (tabla endpoints), `API_GUIDE.md` |
+| Nueva regla de negocio | `BUSINESS.md`, `AGENTS.md` (si es regla clave), `TESTING.md` |
+| Nueva tecnología | `tecnologias.md`, `AGENTS.md` (stack) |
+| Cambio de arquitectura | `arquitectura.md`, `AGENTS.md` (estructura de paquetes) |
+| Funcionalidad completada | `AGENTS.md` (tabla de estado), `CHANGELOG.md` |
+| Decisión de diseño | `AGENTS.md` (historial de decisiones) |
+| Cualquier push | `CHANGELOG.md` (siempre, sin excepción) |
+
+### Flujo de trabajo obligatorio al completar una tarea:
+1. Implementar el cambio en código.
+2. Actualizar todos los archivos de documentación afectados (tabla anterior).
+3. Actualizar `AGENTS.md` → sección "Estado Actual" si corresponde.
+4. Registrar en "Historial de Decisiones" si fue un cambio de diseño.
+5. Actualizar `CHANGELOG.md`.
+6. Hacer `git commit` y `git push` con código + documentación en el mismo commit.
+
+---
+
 ## 📋 Responsabilidad sobre CHANGELOG.md
 
 **Copilot es responsable de mantener `CHANGELOG.md` actualizado.**  
