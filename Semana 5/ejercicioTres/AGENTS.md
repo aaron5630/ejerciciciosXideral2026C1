@@ -1,96 +1,159 @@
 # Contexto del Proyecto - ejercicioTres
 
 Este archivo es leído automáticamente por GitHub Copilot CLI al iniciar una sesión en esta carpeta.
-Contiene el contexto, reglas y estado actual del proyecto para mantener continuidad entre sesiones.
+Contiene el contexto clave del proyecto para mantener continuidad entre sesiones.
+
+> **Instrucción para Copilot:** Al iniciar sesión, leer también `BUSINESS.md` y `arquitectura.md`
+> para tener el contexto completo de reglas de negocio y estructura de código.
 
 ---
 
 ## 📌 Descripción del Proyecto
 
-> _Por definir — Ver `README.md` para la descripción pública y `BUSINESS.md` para las reglas de negocio._
+REST API de gestión de préstamos de biblioteca, construida con **Spring Boot 3.5.0 + Java 17**.  
+Proyecto de demostración de desarrollo asistido por IA con metodología **TDD**.  
+Usa **H2 en memoria** para pruebas. Migración a MySQL pendiente para fase productiva.
 
-Aplicación demostrativa del uso de IA en la generación de código, construida con Spring Boot.
-
-## 📖 Archivos de Contexto — Leer al iniciar sesión
-
-Al iniciar una sesión en este proyecto, GitHub Copilot CLI debe leer los siguientes archivos en orden:
-
-| Prioridad | Archivo | Contenido |
-|---|---|---|
-| 1 | `AGENTS.md` | Contexto general, reglas y convenciones *(este archivo)* |
-| 2 | `BUSINESS.md` | Reglas de negocio, funcionalidades y entidades del dominio |
-| 3 | `arquitectura.md` | Arquitectura, capas, estructura de paquetes y SOLID |
-| 4 | `tecnologias.md` | Stack tecnológico |
-| 5 | `CHANGELOG.md` | Historial de cambios recientes |
+- **Repositorio:** `github.com:aaron5630/ejerciciciosXideral2026C1.git`, rama `master`
+- **Ruta del proyecto:** `Semana 5/ejercicioTres/biblioteca/`
+- **Package base:** `com.biblioteca`
+- **Puerto:** `8080` | H2 console: `http://localhost:8080/h2-console`
 
 ---
 
-## 🛠️ Tecnologías y Stack
+## 📖 Archivos de Contexto — Leer al iniciar sesión
 
-> _Por definir — Ver también `tecnologias.md` para el detalle completo._
+| Prioridad | Archivo | Contenido |
+|---|---|---|
+| 1 | `AGENTS.md` | Este archivo — contexto rápido y convenciones |
+| 2 | `BUSINESS.md` | **Fuente de verdad:** entidades, 17 reglas de negocio, 15 casos de uso, endpoints |
+| 3 | `arquitectura.md` | Arquitectura en capas, paquetes, excepciones, convenciones de nomenclatura |
+| 4 | `TESTING.md` | 40 casos de prueba documentados (TDD) |
+| 5 | `CHANGELOG.md` | Historial de commits y cambios |
+| 6 | `API_GUIDE.md` | Ejemplos JSON probados en vivo de los 15 endpoints |
+
+---
+
+## 🛠️ Stack Tecnológico
+
+| Tecnología | Versión | Uso |
+|---|---|---|
+| Java | 17 | Lenguaje |
+| Spring Boot | 3.5.0 | Framework principal |
+| Spring Web | — | REST API |
+| Spring Data JPA | — | Persistencia |
+| H2 | — | BD en memoria (pruebas) |
+| JUnit 5 | — | Pruebas unitarias |
+| Mockito | — | Mocks en pruebas |
+| Maven | — | Build tool |
 
 ---
 
 ## 🏛️ Arquitectura
 
-> _Por definir — Ver también `arquitectura.md` para el detalle completo._
+Arquitectura en capas: `Controller → Service → ServiceImpl → Repository → Model`
+
+### Estructura de paquetes (`com.biblioteca`)
+
+```
+model/
+  enums/      → Rol, Genero, EstadoPrestamo
+  Usuario.java, Libro.java, Prestamo.java
+repository/   → UsuarioRepository, LibroRepository, PrestamoRepository
+service/
+  UsuarioService.java, LibroService.java, PrestamoService.java (interfaces)
+  impl/       → UsuarioServiceImpl, LibroServiceImpl, PrestamoServiceImpl
+controller/   → UsuarioController, LibroController, PrestamoController
+exception/    → 12 excepciones + GlobalExceptionHandler
+```
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📦 Entidades y Campos Clave
 
-> _Se actualizará una vez que se genere el proyecto Spring Boot._
+### `Usuario`
+`id, nombre, telefono, email (unique), password, fechaRegistro (auto), activo (default true), rol (Enum)`
+
+### `Libro`
+`id, titulo, isbn (unique), autor, genero (Enum), cantidad, disponible (default true), fechaRegistro (auto), registradoPor (Usuario)`
+
+### `Prestamo`
+`id, usuario, empleado, libro, fechaPrestamo (auto), fechaEntregaEstimada (auto = +10 días), fechaEntregaReal (null hasta devolución), estado (Enum: ACTIVO/DEVUELTO/RETRASADO)`
+
+---
+
+## 📡 Endpoints (15 en total)
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| POST | `/api/usuarios` | Registrar usuario |
+| GET | `/api/usuarios` | Listar usuarios |
+| GET | `/api/usuarios/{id}` | Obtener por ID |
+| PUT | `/api/usuarios/{id}` | Actualizar |
+| DELETE | `/api/usuarios/{id}` | Desactivar (soft) |
+| POST | `/api/libros?idEmpleado={}` | Registrar libro |
+| GET | `/api/libros` | Listar libros |
+| GET | `/api/libros/{id}` | Obtener por ID |
+| PUT | `/api/libros/{id}` | Actualizar |
+| DELETE | `/api/libros/{id}` | Desactivar (soft) |
+| POST | `/api/prestamos?idUsuario={}&idEmpleado={}&idLibro={}` | Registrar préstamo |
+| PUT | `/api/prestamos/{id}/devolucion` | Registrar devolución |
+| GET | `/api/prestamos` | Listar préstamos |
+| GET | `/api/prestamos/{id}` | Obtener por ID |
+| GET | `/api/prestamos/usuario/{id}` | Préstamos de un usuario |
 
 ---
 
 ## ✅ Reglas y Convenciones
 
 - Responder siempre en **español**.
-- Antes de hacer cambios importantes, listar las actividades a realizar y pedir confirmación.
-- Mantener este archivo (`AGENTS.md`) actualizado con cada cambio relevante del proyecto.
-- Mantener `tecnologias.md` y `arquitectura.md` sincronizados con el estado actual del proyecto.
+- Verificación de roles se hace **manualmente en ServiceImpl** (no hay JWT/Spring Security aún).
+- Solo `ROLE_USER` puede solicitar préstamos; `ROLE_EMPLOYEE` y `ROLE_ADMIN` pueden registrar libros.
+- `fechaEntregaEstimada` siempre se calcula automáticamente (`+10 días`) — el empleado **NO** la envía.
+- `diasRetardo` NO es campo de BD — se calcula dinámicamente en Service.
+- Soft delete: usuarios se desactivan (`activo=false`), libros se desactivan (`disponible=false`).
 - Hacer cambios precisos y quirúrgicos; no modificar código no relacionado.
-- Documentar decisiones de diseño importantes aquí.
+- Nombres de métodos de prueba: `metodo_condicion_resultadoEsperado`.
+
+---
 
 ## 📋 Responsabilidad sobre CHANGELOG.md
 
-**GitHub Copilot CLI es responsable de mantener `CHANGELOG.md` actualizado.**
-
-Cada vez que se realice un `push` o `pull` en el proyecto, Copilot debe:
-
-1. Ejecutar `git log` para obtener los commits recientes.
-2. Identificar commits nuevos no registrados en `CHANGELOG.md`.
-3. Agregar una nueva entrada con el siguiente formato:
-
-```
-## [vX.X.X o Sin versión] - YYYY-MM-DD
-
-### Tipo (Agregado / Cambiado / Corregido / Eliminado)
-- `autor` — descripción del cambio (referencia al commit si aplica)
-```
-
-4. Incluir el **autor del commit**, la **fecha** y una **descripción breve** del cambio.
-5. Usar la convención **Conventional Commits** para los mensajes:
-   - `feat:` nueva funcionalidad
-   - `fix:` corrección de error
-   - `docs:` cambios en documentación
-   - `refactor:` refactorización de código
-   - `chore:` tareas de mantenimiento
+**Copilot es responsable de mantener `CHANGELOG.md` actualizado.**  
+Después de cada `push`, agregar entrada con: fecha, commit SHA, archivos cambiados y descripción.  
+Formato Conventional Commits: `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`, `test:`.
 
 ---
 
 ## 📝 Historial de Decisiones
 
-| Fecha       | Decisión                                      |
-|-------------|-----------------------------------------------|
-| 2026-03-10  | Se crea estructura inicial del proyecto       |
-| 2026-03-10  | Se crean `tecnologias.md` y `arquitectura.md` |
-| 2026-03-10  | Se crea `AGENTS.md` para contexto persistente |
+| Fecha | Decisión |
+|---|---|
+| 2026-03-10 | Stack: Java 17 + Spring Boot 3.5.0 + H2 + JUnit 5 + Mockito |
+| 2026-03-10 | Arquitectura en capas; roles verificados en ServiceImpl (sin JWT) |
+| 2026-03-10 | TDD: pruebas escritas antes del código (ciclo 🔴🟢🔵) |
+| 2026-03-11 | `fechaEntregaEstimada` es automática (+10 días) — no la envía el empleado |
+| 2026-03-11 | Test `registrarPrestamo_fechaInvalida` eliminado — no aplica con la regla anterior |
+| 2026-03-11 | H2: `bibliotecaV1` en memoria, `ddl-auto=create-drop`, consola habilitada |
+| 2026-03-11 | `Prestamo.@PrePersist` auto-asigna fechas y `estado=ACTIVO` |
 
 ---
 
-## 🚧 Estado Actual
+## 🚀 Estado Actual del Proyecto
 
-- [ ] Definir stack tecnológico
-- [ ] Definir arquitectura de la aplicación
-- [ ] Generar proyecto Spring Boot base
+✅ **COMPLETADO** — La aplicación está funcional y testeada.
+
+| Componente | Estado |
+|---|---|
+| Documentación (BUSINESS, arquitectura, tecnologias, TESTING) | ✅ Completo |
+| Enums (Rol, Genero, EstadoPrestamo) | ✅ Completo |
+| Modelos JPA (Usuario, Libro, Prestamo) | ✅ Completo |
+| Repositorios (3) | ✅ Completo |
+| Excepciones (12 + GlobalExceptionHandler) | ✅ Completo |
+| Pruebas TDD (40 pruebas — 🟢 todas pasan) | ✅ Completo |
+| Services + ServiceImpl (3 cada uno) | ✅ Completo |
+| Controllers (3, 15 endpoints) | ✅ Completo |
+| API_GUIDE.md (ejemplos probados en vivo) | ✅ Completo |
+| README.md | ✅ Completo |
+| Migración a MySQL | ⏳ Pendiente (fase futura) |
+| Autenticación JWT / Spring Security | ⏳ Pendiente (fase futura) |
