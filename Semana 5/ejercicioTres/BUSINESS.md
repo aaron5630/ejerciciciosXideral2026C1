@@ -42,7 +42,7 @@ Aplicación REST que simula un sistema de préstamos de libros para una bibliote
 | 2 | Email único | El email es irrepetible y se usa como identificador de validación |
 | 3 | Baja lógica de usuarios | Los usuarios no se eliminan físicamente, se desactivan con `activo = false` |
 | 4 | Solo empleados gestionan préstamos | Solo `ROLE_EMPLOYEE` o `ROLE_ADMIN` pueden registrar y autorizar préstamos |
-| 5 | Solo admin gestiona catálogo | Solo `ROLE_ADMIN` puede agregar, editar o eliminar libros y usuarios |
+| 5 | Solo admin gestiona catálogo | Solo `ROLE_ADMIN` puede editar o eliminar libros y usuarios. `ROLE_ADMIN` y `ROLE_EMPLOYEE` pueden registrar libros |
 | 6 | Registro de responsable | Todo préstamo debe registrar el empleado que lo autorizó |
 | 7 | Máximo 3 préstamos activos | Un `ROLE_USER` no puede tener más de 3 préstamos con estado `ACTIVO` simultáneamente |
 | 8 | Sin préstamos con retardo | Si el usuario tiene algún préstamo con estado `RETRASADO`, no puede solicitar otro hasta que lo devuelva |
@@ -54,7 +54,7 @@ Aplicación REST que simula un sistema de préstamos de libros para una bibliote
 | 14 | Sin duplicado activo | Un usuario no puede tener 2 préstamos `ACTIVOS` del mismo libro simultáneamente |
 | 15 | Fecha estimada válida | La `fechaEntregaEstimada` siempre debe ser posterior a la `fechaPrestamo` |
 | 16 | Empleado no puede ser solicitante | El empleado autorizante no puede ser el mismo usuario que el solicitante del préstamo |
-| 17 | Límite de préstamo | La duración máxima de un préstamo es de **10 días**. La `fechaEntregaEstimada` se calcula como `fechaPrestamo + 10 días` |
+| 17 | Límite de préstamo | La duración máxima de un préstamo es de **10 días**. La `fechaEntregaEstimada` se calcula **automáticamente** por el sistema como `fechaPrestamo + 10 días`. El empleado no la elige. |
 
 ---
 
@@ -245,7 +245,7 @@ Representa el préstamo de un libro a un usuario. Es la entidad central de la ap
 
 **CU-11 — Registrar préstamo**
 ```
-1. Empleado envía solicitud de préstamo (idUsuario, idEmpleado, idLibro, fechaEntregaEstimada)
+1. Empleado envía solicitud de préstamo (idUsuario, idEmpleado, idLibro)
 2. Sistema verifica que el usuario solicitante exista y esté activo
 3. Sistema verifica que el usuario tenga ROLE_USER
 4. Sistema verifica que el usuario no tenga más de 3 préstamos ACTIVOS
@@ -253,7 +253,7 @@ Representa el préstamo de un libro a un usuario. Es la entidad central de la ap
 6. Sistema verifica que el empleado exista, esté activo y no sea el mismo que el solicitante
 7. Sistema verifica que el libro exista, tenga disponible = true y cantidad > 0
 8. Sistema verifica que el usuario no tenga ya un préstamo ACTIVO del mismo libro
-9. Sistema verifica que fechaEntregaEstimada sea máximo fechaPrestamo + 10 días
+9. Sistema calcula automáticamente fechaEntregaEstimada = fechaPrestamo + 10 días
 10. Sistema registra el préstamo con estado = ACTIVO y fechaPrestamo = hoy
 11. Sistema descuenta 1 a la cantidad del libro
 12. Sistema retorna los datos del préstamo registrado

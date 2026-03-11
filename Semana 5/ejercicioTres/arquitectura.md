@@ -70,6 +70,7 @@ com.biblioteca
 │   ├── LimitePrestamosException.java
 │   ├── PrestamoRetrasadoException.java
 │   ├── LibroYaPrestadoException.java
+│   ├── RolNoPermitidoException.java
 │   └── EmpleadoNoValidoException.java
 └── BibliotecaApplication.java
 ```
@@ -186,6 +187,7 @@ Cada excepción retorna una respuesta HTTP estandarizada con código de estado y
 | `LimitePrestamosException` | `400 Bad Request` | Usuario ya tiene 3 préstamos activos |
 | `PrestamoRetrasadoException` | `400 Bad Request` | Usuario tiene préstamos con estado `RETRASADO` |
 | `LibroYaPrestadoException` | `400 Bad Request` | Usuario ya tiene ese libro en préstamo activo |
+| `RolNoPermitidoException` | `403 Forbidden` | Usuario no tiene el rol requerido para realizar la acción |
 | `EmpleadoNoValidoException` | `400 Bad Request` | Empleado inactivo o es el mismo que el solicitante |
 
 ---
@@ -219,4 +221,23 @@ Cada excepción retorna una respuesta HTTP estandarizada con código de estado y
 
 ---
 
-> 📝 Última actualización: 2026-03-10
+## 🗄️ Base de Datos — H2
+
+Base de datos **en memoria** para desarrollo y pruebas. Los datos **no persisten** al detener la aplicación. Cuando el proyecto se conecte a MySQL en el futuro, solo se cambiará la configuración sin tocar el código.
+
+| Propiedad | Valor | Descripción |
+|---|---|---|
+| **Nombre** | `bibliotecaV1` | Nombre de la base de datos en memoria |
+| **URL** | `jdbc:h2:mem:bibliotecaV1` | Conexión en memoria, sin archivo físico |
+| **Consola H2** | Habilitada | Accesible desde el navegador vía `localhost` |
+| **Ruta consola** | `http://localhost:8080/h2-console` | URL para acceder a la consola visual |
+| **Persistencia** | ❌ No persiste | Los datos se borran al detener la aplicación |
+| **Creación de tablas** | Automática | JPA genera las tablas al arrancar (`ddl-auto=create-drop`) |
+
+> 📌 **Migración futura:** Al conectar con MySQL, se cambia `application.properties` agregando el driver, URL, usuario y contraseña de MySQL. El código de la aplicación no requiere cambios.
+
+> 📋 **Guía de ejecución:** Se documentará en `README.md` cuando el proyecto esté listo, incluyendo cómo arrancar la app y cómo acceder a la consola H2.
+
+---
+
+> 📝 Última actualización: 2026-03-11

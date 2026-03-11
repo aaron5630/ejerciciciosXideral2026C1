@@ -56,8 +56,18 @@ Los mensajes de commit siguen la convención [Conventional Commits](https://www.
 - `BUSINESS.md` — actualizado con endpoints detallados por recurso y casos de uso completos.
 - `TESTING.md` — actualizado con estructura base para pruebas unitarias.
 
+---
+
+## [Sin versión] - 2026-03-11 (2)
+
+### Cambiado
+- `TESTING.md` — completado con 41 casos de prueba (9 Usuario, 11 Libro, 21 Préstamo), estrategia TDD, patrón AAA y convenciones de nomenclatura.
+- `tecnologias.md` — agregada sección de TDD como metodología de desarrollo.
+- `arquitectura.md` — agregada sección de TDD con ciclo 🔴🟢🔵 y justificación.
+- `CHANGELOG.md` — registro actualizado.
+
 ### Commit
-- **`5c2e491`** — `docs: completar documentacion del proyecto biblioteca`
+- **`b0d15c3`** — `docs: agregar documentacion de pruebas TDD y metodologia`
   - Autor: aaron5630 + Copilot
   - Rama: `master` → `origin/master`
-  - Archivos: `README.md`, `BUSINESS.md`, `TESTING.md`, `arquitectura.md`
+  - Archivos: `TESTING.md`, `tecnologias.md`, `arquitectura.md`, `CHANGELOG.md`

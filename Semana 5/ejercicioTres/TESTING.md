@@ -71,7 +71,7 @@ Este archivo documenta la estrategia de pruebas del proyecto, los casos de prueb
 | 1 | `registrarPrestamo_exitoso` | Registra el préstamo correctamente y descuenta stock |
 | 2 | `registrarPrestamo_usuarioNoExiste_lanzaUsuarioNotFoundException` | Lanza excepción si el usuario no existe |
 | 3 | `registrarPrestamo_usuarioInactivo_lanzaUsuarioInactivoException` | Lanza excepción si el usuario está inactivo |
-| 4 | `registrarPrestamo_usuarioSinRolUser_lanzaException` | Lanza excepción si el usuario no tiene `ROLE_USER` |
+| 4 | `registrarPrestamo_usuarioSinRolUser_lanzaRolNoPermitidoException` | Lanza excepción si el usuario no tiene `ROLE_USER` |
 | 5 | `registrarPrestamo_limiteActivos_lanzaLimitePrestamosException` | Lanza excepción si el usuario ya tiene 3 préstamos activos |
 | 6 | `registrarPrestamo_conRetardo_lanzaPrestamoRetrasadoException` | Lanza excepción si el usuario tiene préstamos retrasados |
 | 7 | `registrarPrestamo_empleadoNoExiste_lanzaUsuarioNotFoundException` | Lanza excepción si el empleado no existe |
