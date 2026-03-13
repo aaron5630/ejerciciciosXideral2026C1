@@ -1,0 +1,119 @@
+@Service
+public class OrderService {
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    // Bug 1 corregido: Se da por sentado que no hay null, por lo que si no hay validación puede enviar una excepción. Se añade validación.
+    public Order createOrder(Order order) {
+        if (order == null) {
+            throw new IllegalArgumentException("Order cannot be null");
+        }
+
+        if (order.getItems() == null) {
+            order.setTotal(0.0);
+        } else {
+            order.setTotal(order.getItems().stream()
+                .mapToDouble(item -> item.getPrice() * item.getQuantity())
+                .sum());
+        }
+
+        return orderRepository.save(order);
+    }
+
+    // Bug 2 corregido: Mal manejo de Optional, por lo que puede enviar una excepción. Se puede usar lambdas o manejar los nulos por medio // de validaciones.
+    public Order getOrderById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
+
+        return orderRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Order not found"));
+    }
+
+    // Bug 3 corregido: problema de concatencación, por lo que se puede inyectar código malicioso. se recurre a hacer una querry especial
+    public List<Order> findOrdersByCustomer(String customerName) {
+        if (customerName == null) {
+            throw new IllegalArgumentException("Customer name cannot be null");
+        }
+
+        // En el repositorio debería verse algo así:
+        // @Query(value = "SELECT * FROM orders WHERE customer = :customerName", nativeQuery = true)
+        // List<Order> findByCustomer(@Param("customerName") String customerName);
+
+        return orderRepository.findByCustomer(customerName);
+    }
+
+    // Bug 4 corregido: Trae todas las ordenes a la memoria, por lo que es innecesario. Se delega esa responsabilidad a la base de datos, // aunque también puede ser contraproducente. 
+    public double getTotalRevenue() {
+        // En el repositorio debería verse algo así:
+        // @Query("SELECT COALESCE(SUM(o.total), 0) FROM Order o")
+        // Double getTotalRevenue();
+
+        Double total = orderRepository.getTotalRevenue();
+        return total != null ? total : 0.0;
+    }
+
+    // Bug 5 corregido: No se valida si el id existe, por lo que la solución es validar primero con el método getOrderById();
+    public void deleteOrder(Long id) {
+        getOrderById(id);
+        orderRepository.deleteById(id);
+    }
+}
+
+
+
+
+//Pruebas Unit
+// @ExtendWith(MockitoExtension.class)
+// class OrderServiceTest {
+//
+//     @Mock
+//     private OrderRepository orderRepository;
+//
+//     @InjectMocks
+//     private OrderService orderService;
+//
+//     @Test
+//     void createOrder_shouldCalculateTotalAndSave() {
+//         Order order = new Order();
+//
+//         OrderItem item1 = new OrderItem();
+//         item1.setPrice(10.0);
+//         item1.setQuantity(2);
+//
+//         OrderItem item2 = new OrderItem();
+//         item2.setPrice(5.0);
+//         item2.setQuantity(1);
+//
+//         order.setItems(Arrays.asList(item1, item2));
+//
+//         when(orderRepository.save(order)).thenReturn(order);
+//
+//         Order saved = orderService.createOrder(order);
+//
+//         assertEquals(25.0, saved.getTotal());
+//         verify(orderRepository).save(order);
+//     }
+//
+//     @Test
+//     void getOrderById_shouldThrowExceptionWhenOrderDoesNotExist() {
+//         when(orderRepository.findById(1L)).thenReturn(Optional.empty());
+//
+//         RuntimeException ex = assertThrows(RuntimeException.class, () -> {
+//             orderService.getOrderById(1L);
+//         });
+//
+//         assertEquals("Order not found", ex.getMessage());
+//     }
+//
+//     @Test
+//     void deleteOrder_shouldDeleteWhenOrderExists() {
+//         Order order = new Order();
+//         when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+//
+//         orderService.deleteOrder(1L);
+//
+//         verify(orderRepository).deleteById(1L);
+//     }
+// }
